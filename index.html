@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 18th Birthday Ishika 🎂</title>
+
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',cursive;
+  background:linear-gradient(135deg,#ffb6c1,#ffc0cb,#ff9acb);
+  color:black;
+  overflow:hidden;
+}
+
+section{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+}
+
+h1{
+  font-size:3.5rem;
+  animation:pop 2s infinite alternate;
+}
+
+h2{
+  font-size:1.8rem;
+}
+
+.photo{
+  width:220px;
+  border-radius:50%;
+  box-shadow:0 0 35px hotpink;
+  margin:20px 0;
+  animation:float 4s infinite alternate;
+}
+
+.btn{
+  padding:15px 35px;
+  font-size:1.2rem;
+  background:black;
+  color:pink;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  margin-top:20px;
+}
+
+.music-btn{
+  position:fixed;
+  top:20px;
+  right:20px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:black;
+  color:pink;
+  font-size:22px;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 0 25px hotpink;
+  z-index:1000;
+}
+
+.card{
+  background:rgba(255,255,255,0.65);
+  padding:40px;
+  border-radius:30px;
+  max-width:750px;
+  animation:glow 3s infinite alternate;
+}
+
+p{
+  font-size:1.2rem;
+  line-height:1.8;
+}
+
+.firework,.balloon{
+  position:fixed;
+  pointer-events:none;
+}
+
+.firework{
+  font-size:28px;
+  animation:explode 2s infinite;
+}
+
+.balloon{
+  font-size:40px;
+  animation:balloon 6s linear infinite;
+}
+
+@keyframes pop{
+  from{transform:scale(1);}
+  to{transform:scale(1.1);}
+}
+
+@keyframes float{
+  from{transform:translateY(0);}
+  to{transform:translateY(-25px);}
+}
+
+@keyframes glow{
+  from{box-shadow:0 0 10px pink;}
+  to{box-shadow:0 0 35px hotpink;}
+}
+
+@keyframes explode{
+  0%{transform:scale(0);}
+  50%{transform:scale(1.5);}
+  100%{transform:scale(0);opacity:0;}
+}
+
+@keyframes balloon{
+  from{bottom:-20%;}
+  to{bottom:120%;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="birthday-song.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()">▶️</button>
+
+<!-- FIREWORKS -->
+<div class="firework" style="top:20%;left:20%;animation-delay:0s">🎆</div>
+<div class="firework" style="top:40%;left:60%;animation-delay:1s">🎇</div>
+<div class="firework" style="top:30%;left:80%;animation-delay:2s">🎆</div>
+
+<!-- BALLOONS -->
+<div class="balloon" style="left:10%;animation-delay:0s">🎈</div>
+<div class="balloon" style="left:45%;animation-delay:2s">🎈</div>
+<div class="balloon" style="left:80%;animation-delay:4s">🎈</div>
+
+<!-- PAGE 1 -->
+<section id="page1">
+  <h1>🎂 Happy 18th Birthday Ishika 🎂</h1>
+  <h2>May your 18th year be filled with love, success & happiness 🌸✨</h2>
+  <img src="ishika.jpg" class="photo" alt="Ishika">
+  <button class="btn" onclick="nextPage()">Surprise ✨</button>
+</section>
+
+<!-- PAGE 2 -->
+<section id="page2" style="display:none;">
+  <div class="card">
+    <h1>Dear Ishika 💕</h1>
+    <p>
+      Happy 18th birthday to my best friend 💖.  
+      May God bless you with confidence, strength, and beautiful opportunities
+      at every step of your life.
+    </p>
+    <p>
+      May your life shine brighter than fireworks 🎆  
+      and rise higher than balloons 🎈.
+    </p>
+    <p>
+      May you always stay healthy, peaceful, successful,  
+      and surrounded by love and positive energy 🌸✨
+    </p>
+    <button class="btn" onclick="backPage()">⬅ Back</button>
+  </div>
+</section>
+
+<script>
+const music = document.getElementById("bgMusic");
+const btn = document.querySelector(".music-btn");
+let playing = false;
+
+function toggleMusic(){
+  if(!playing){
+    music.play();
+    btn.textContent = "⏸️";
+    playing = true;
+  } else {
+    music.pause();
+    btn.textContent = "▶️";
+    playing = false;
+  }
+}
+
+function nextPage(){
+  document.getElementById("page1").style.display = "none";
+  document.getElementById("page2").style.display = "flex";
+}
+
+function backPage(){
+  document.getElementById("page2").style.display = "none";
+  document.getElementById("page1").style.display = "flex";
+}
+</script>
+
+</body>
+</html>
